@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import greetWorldLogo from "@/assets/greetworld-logo.png";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
