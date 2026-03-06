@@ -81,7 +81,7 @@ const Contact = () => {
                 <h3 className="text-2xl font-bold text-foreground mb-6">
                   Send Us a Message
                 </h3>
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="text-sm font-medium text-foreground mb-2 block">
