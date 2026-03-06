@@ -150,7 +150,7 @@ const Contact = () => {
                   className="w-full bg-white/20 hover:bg-white/30 text-white border-white/30"
                 >
                   <Phone className="mr-2 w-5 h-5" />
-                  Call Now: +91 98765 43210
+                  Call Now: +91 94030 80909
                 </Button>
               </CardContent>
             </Card>
