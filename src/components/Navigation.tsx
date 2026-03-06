@@ -19,7 +19,9 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <img src={greetWorldLogo} alt="GreetWorld Holidays" className="h-12 w-auto" />
+            <h1 className="text-2xl font-bold bg-gradient-hero bg-clip-text text-transparent">
+              GreetWorld
+            </h1>
           </div>
 
           {/* Desktop Navigation */}
