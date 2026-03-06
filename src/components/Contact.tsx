@@ -100,7 +100,10 @@ const Contact = () => {
                         Email Address *
                       </label>
                       <Input 
+                        name="email"
                         type="email"
+                        value={formData.email}
+                        onChange={handleChange}
                         placeholder="Enter your email"
                         className="border-border focus:ring-primary"
                       />
