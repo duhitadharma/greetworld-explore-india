@@ -156,6 +156,9 @@ const Contact = () => {
                       Message
                     </label>
                     <Textarea 
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
                       placeholder="Tell us about your travel preferences, group size, budget, and any special requirements..."
                       rows={5}
                       className="border-border focus:ring-primary resize-none"
