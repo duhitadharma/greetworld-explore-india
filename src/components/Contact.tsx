@@ -116,7 +116,10 @@ const Contact = () => {
                         Phone Number *
                       </label>
                       <Input 
+                        name="phone"
                         type="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
                         placeholder="Enter your phone number"
                         className="border-border focus:ring-primary"
                       />
