@@ -1,16 +1,17 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Clock, Star } from "lucide-react";
 import destinationsImage from "@/assets/indian-destinations.jpg";
+import { useState } from "react";
 
 const Destinations = () => {
+  const [flipped, setFlipped] = useState<number | null>(null);
+
   const destinations = [
     {
       name: "Golden Triangle",
       location: "Delhi - Agra - Jaipur",
       duration: "7 Days",
       rating: 4.8,
-      price: "₹25,000",
       description: "Explore India's most iconic destinations including the majestic Taj Mahal.",
       highlights: ["Taj Mahal", "Red Fort", "Hawa Mahal", "Amber Palace"]
     },
@@ -19,7 +20,6 @@ const Destinations = () => {
       location: "Alleppey - Kumarakom",
       duration: "5 Days",
       rating: 4.9,
-      price: "₹18,000",
       description: "Cruise through serene backwaters in traditional houseboats.",
       highlights: ["Houseboat Stay", "Spice Gardens", "Ayurvedic Spa", "Local Cuisine"]
     },
@@ -28,7 +28,6 @@ const Destinations = () => {
       location: "Jodhpur - Udaipur - Jaisalmer",
       duration: "10 Days",
       rating: 4.7,
-      price: "₹35,000",
       description: "Experience royal heritage in the land of maharajas.",
       highlights: ["Palace Hotels", "Desert Safari", "Royal Dining", "Folk Performances"]
     },
@@ -37,7 +36,6 @@ const Destinations = () => {
       location: "Manali - Leh - Ladakh",
       duration: "12 Days",
       rating: 4.6,
-      price: "₹45,000",
       description: "Thrilling journey through the mighty Himalayas.",
       highlights: ["Mountain Views", "Monasteries", "Adventure Sports", "Local Culture"]
     },
@@ -46,7 +44,6 @@ const Destinations = () => {
       location: "North & South Goa",
       duration: "6 Days",
       rating: 4.8,
-      price: "₹20,000",
       description: "Relax on pristine beaches and enjoy vibrant nightlife.",
       highlights: ["Beach Resorts", "Water Sports", "Portuguese Heritage", "Beach Parties"]
     },
@@ -55,7 +52,6 @@ const Destinations = () => {
       location: "Chennai - Madurai - Thanjavur",
       duration: "8 Days",
       rating: 4.5,
-      price: "₹22,000",
       description: "Discover ancient temples and rich Dravidian architecture.",
       highlights: ["Ancient Temples", "Classical Dance", "Local Crafts", "Cultural Shows"]
     }
@@ -95,59 +91,70 @@ const Destinations = () => {
         {/* Destinations Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {destinations.map((destination, index) => (
-            <Card key={index} className="group overflow-hidden border-0 shadow-cool hover:shadow-elevated transition-all duration-300 hover:-translate-y-2">
-              <CardContent className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-foreground mb-1">
-                      {destination.name}
-                    </h3>
-                    <div className="flex items-center text-muted-foreground text-sm">
-                      <MapPin className="w-4 h-4 mr-1" />
-                      {destination.location}
+            <div
+              key={index}
+              className="cursor-pointer [perspective:1000px] h-[340px]"
+              onClick={() => setFlipped(flipped === index ? null : index)}
+            >
+              <div
+                className={`relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] ${
+                  flipped === index ? "[transform:rotateY(180deg)]" : ""
+                }`}
+              >
+                {/* Front */}
+                <div className="absolute inset-0 [backface-visibility:hidden] rounded-xl shadow-cool hover:shadow-elevated transition-shadow bg-card p-6 flex flex-col">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground mb-1">
+                        {destination.name}
+                      </h3>
+                      <div className="flex items-center text-muted-foreground text-sm">
+                        <MapPin className="w-4 h-4 mr-1" />
+                        {destination.location}
+                      </div>
                     </div>
-                  </div>
-                  <div className="text-right">
-                    <div className="flex items-center mb-1">
+                    <div className="flex items-center">
                       <Star className="w-4 h-4 text-golden mr-1" fill="currentColor" />
                       <span className="text-sm font-medium">{destination.rating}</span>
                     </div>
-                    <div className="text-2xl font-bold text-primary">
-                      {destination.price}
-                    </div>
                   </div>
+
+                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                    {destination.description}
+                  </p>
+
+                  <div className="flex items-center text-sm text-muted-foreground mb-4">
+                    <Clock className="w-4 h-4 mr-1" />
+                    {destination.duration}
+                  </div>
+
+                  <p className="text-xs text-muted-foreground mt-auto">Click to see highlights →</p>
                 </div>
 
-                <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                  {destination.description}
-                </p>
-
-                <div className="flex items-center text-sm text-muted-foreground mb-4">
-                  <Clock className="w-4 h-4 mr-1" />
-                  {destination.duration}
-                </div>
-
-                <div className="space-y-2 mb-6">
-                  <div className="text-sm font-medium text-foreground">Highlights:</div>
-                  <div className="flex flex-wrap gap-1">
+                {/* Back */}
+                <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-xl shadow-cool bg-gradient-hero text-white p-6 flex flex-col">
+                  <h3 className="text-xl font-bold mb-4">{destination.name}</h3>
+                  <div className="text-sm font-medium mb-3">Highlights:</div>
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {destination.highlights.map((highlight, idx) => (
-                      <span 
+                      <span
                         key={idx}
-                        className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full"
+                        className="px-3 py-1 bg-white/20 text-white text-xs rounded-full backdrop-blur-sm"
                       >
                         {highlight}
                       </span>
                     ))}
                   </div>
+                  <Button
+                    className="w-full mt-auto bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm border border-white/30"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    View Details
+                  </Button>
+                  <p className="text-xs text-white/70 mt-2 text-center">Click to flip back</p>
                 </div>
-
-                <Button 
-                  className="w-full bg-saffron hover:bg-saffron-light text-white shadow-warm group-hover:shadow-elevated transition-all"
-                >
-                  View Details
-                </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
 
