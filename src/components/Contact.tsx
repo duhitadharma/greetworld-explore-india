@@ -15,7 +15,7 @@ const Contact = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email Us",
-      details: ["info@greetworld.com"],
+      details: ["info@greetworld.in"],
       subtitle: "Quick Response",
     },
     {
