@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import greetWorldLogo from "@/assets/greetworld-logo.png";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
@@ -18,9 +19,7 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold bg-gradient-hero bg-clip-text text-transparent">
-              GreetWorld
-            </h1>
+            <img src={greetWorldLogo} alt="GreetWorld Holidays" className="h-12 w-auto" />
           </div>
 
           {/* Desktop Navigation */}
