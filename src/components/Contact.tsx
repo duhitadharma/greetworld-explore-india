@@ -143,6 +143,9 @@ const Contact = () => {
                       Destination of Interest
                     </label>
                     <Input 
+                      name="destination"
+                      value={formData.destination}
+                      onChange={handleChange}
                       placeholder="e.g., Golden Triangle, Kerala, Rajasthan"
                       className="border-border focus:ring-primary"
                     />
