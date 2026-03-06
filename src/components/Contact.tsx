@@ -1,55 +1,35 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
-const WHATSAPP_NUMBER = "919876543210"; // Change to your actual WhatsApp number
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    travelDate: "",
-    destination: "",
-    message: "",
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const text = `Hello GreetWorld Holidays!%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Phone:* ${formData.phone}%0A*Travel Date:* ${formData.travelDate}%0A*Destination:* ${formData.destination}%0A*Message:* ${formData.message}`;
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank");
-  };
   const contactInfo = [
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Call Us",
-      details: ["+91 98765 43210", "+91 87654 32109"],
-      subtitle: "Available 24/7"
+      details: ["+91 94030 80909"],
+      subtitle: "Available 24/7",
     },
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email Us",
-      details: ["info@greetworld.com", "bookings@greetworld.com"],
-      subtitle: "Quick Response"
+      details: ["info@greetworld.com"],
+      subtitle: "Quick Response",
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Visit Us",
-      details: ["123 Travel Plaza", "Connaught Place, New Delhi"],
-      subtitle: "Mon-Sat: 9AM-7PM"
+      details: ["Shop No. 01, Laxmi Nivas", "Sudarshan Chowk, Pimple Gurav", "Pune, Maharashtra, India"],
+      subtitle: "Mon-Sat: 9AM-7PM",
     },
     {
       icon: <Clock className="w-6 h-6" />,
       title: "Office Hours",
       details: ["Monday - Saturday", "9:00 AM - 7:00 PM"],
-      subtitle: "Sunday: 10AM-4PM"
-    }
+      subtitle: "Sunday: 10AM-4PM",
+    },
   ];
 
   return (
@@ -63,13 +43,11 @@ const Contact = () => {
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
             Start Your
-            <span className="block bg-gradient-hero bg-clip-text text-transparent">
-              Journey Today
-            </span>
+            <span className="block bg-gradient-hero bg-clip-text text-transparent">Journey Today</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to explore India? Our travel experts are here to help you plan 
-            the perfect adventure tailored to your preferences and budget.
+            Ready to explore India? Our travel experts are here to help you plan the perfect adventure tailored to your
+            preferences and budget.
           </p>
         </div>
 
@@ -78,94 +56,52 @@ const Contact = () => {
           <div className="lg:col-span-2">
             <Card className="border-0 shadow-elevated">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold text-foreground mb-6">
-                  Send Us a Message
-                </h3>
-                <form className="space-y-6" onSubmit={handleSubmit}>
+                <h3 className="text-2xl font-bold text-foreground mb-6">Send Us a Message</h3>
+                <form className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="text-sm font-medium text-foreground mb-2 block">
-                        Full Name *
-                      </label>
-                      <Input 
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Enter your full name"
-                        className="border-border focus:ring-primary"
-                      />
+                      <label className="text-sm font-medium text-foreground mb-2 block">Full Name *</label>
+                      <Input placeholder="Enter your full name" className="border-border focus:ring-primary" />
                     </div>
                     <div>
-                      <label className="text-sm font-medium text-foreground mb-2 block">
-                        Email Address *
-                      </label>
-                      <Input 
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="Enter your email"
-                        className="border-border focus:ring-primary"
-                      />
+                      <label className="text-sm font-medium text-foreground mb-2 block">Email Address *</label>
+                      <Input type="email" placeholder="Enter your email" className="border-border focus:ring-primary" />
                     </div>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="text-sm font-medium text-foreground mb-2 block">
-                        Phone Number *
-                      </label>
-                      <Input 
-                        name="phone"
+                      <label className="text-sm font-medium text-foreground mb-2 block">Phone Number *</label>
+                      <Input
                         type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
                         placeholder="Enter your phone number"
                         className="border-border focus:ring-primary"
                       />
                     </div>
                     <div>
-                      <label className="text-sm font-medium text-foreground mb-2 block">
-                        Travel Dates
-                      </label>
-                      <Input 
-                        name="travelDate"
-                        type="date"
-                        value={formData.travelDate}
-                        onChange={handleChange}
-                        className="border-border focus:ring-primary"
-                      />
+                      <label className="text-sm font-medium text-foreground mb-2 block">Travel Dates</label>
+                      <Input type="date" className="border-border focus:ring-primary" />
                     </div>
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">
-                      Destination of Interest
-                    </label>
-                    <Input 
-                      name="destination"
-                      value={formData.destination}
-                      onChange={handleChange}
+                    <label className="text-sm font-medium text-foreground mb-2 block">Destination of Interest</label>
+                    <Input
                       placeholder="e.g., Golden Triangle, Kerala, Rajasthan"
                       className="border-border focus:ring-primary"
                     />
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">
-                      Message
-                    </label>
-                    <Textarea 
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
+                    <label className="text-sm font-medium text-foreground mb-2 block">Message</label>
+                    <Textarea
                       placeholder="Tell us about your travel preferences, group size, budget, and any special requirements..."
                       rows={5}
                       className="border-border focus:ring-primary resize-none"
                     />
                   </div>
 
-                  <Button 
+                  <Button
                     type="submit"
                     size="lg"
                     className="w-full bg-saffron hover:bg-saffron-light text-white shadow-warm hover:shadow-elevated transition-all"
@@ -188,9 +124,7 @@ const Contact = () => {
                       {info.icon}
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-bold text-foreground mb-1">
-                        {info.title}
-                      </h4>
+                      <h4 className="text-lg font-bold text-foreground mb-1">{info.title}</h4>
                       <div className="space-y-1">
                         {info.details.map((detail, idx) => (
                           <p key={idx} className="text-muted-foreground">
@@ -198,9 +132,7 @@ const Contact = () => {
                           </p>
                         ))}
                       </div>
-                      <p className="text-sm text-primary mt-2 font-medium">
-                        {info.subtitle}
-                      </p>
+                      <p className="text-sm text-primary mt-2 font-medium">{info.subtitle}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -210,13 +142,9 @@ const Contact = () => {
             {/* Quick Contact Card */}
             <Card className="bg-gradient-hero text-white border-0 shadow-elevated">
               <CardContent className="p-6 text-center">
-                <h4 className="text-xl font-bold mb-2">
-                  Need Immediate Assistance?
-                </h4>
-                <p className="text-white/90 mb-4">
-                  Call our 24/7 helpline for urgent travel support
-                </p>
-                <Button 
+                <h4 className="text-xl font-bold mb-2">Need Immediate Assistance?</h4>
+                <p className="text-white/90 mb-4">Call our 24/7 helpline for urgent travel support</p>
+                <Button
                   variant="secondary"
                   size="lg"
                   className="w-full bg-white/20 hover:bg-white/30 text-white border-white/30"
@@ -233,9 +161,7 @@ const Contact = () => {
         <div className="mt-16 text-center">
           <Card className="bg-muted/50 border-0">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold text-foreground mb-4">
-                Why Choose GreetWorld?
-              </h3>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Why Choose GreetWorld?</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                 <div>
                   <div className="text-3xl mb-2">🏆</div>
