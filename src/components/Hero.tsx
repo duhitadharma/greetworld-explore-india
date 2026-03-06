@@ -32,7 +32,7 @@ const Hero = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl mb-8 text-white/80 max-w-3xl mx-auto leading-relaxed">
             Embark on an unforgettable journey through India's rich heritage, stunning landscapes, 
             and vibrant culture with our expertly crafted tour experiences.
           </p>

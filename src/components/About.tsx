@@ -100,7 +100,7 @@ const About = () => {
               <div className="absolute inset-0 bg-gradient-cool opacity-20 rounded-2xl"></div>
             </div>
             {/* Floating Stats Card */}
-            <Card className="absolute -bottom-6 -left-6 bg-white/95 backdrop-blur-sm shadow-elevated border-0">
+            <Card className="absolute -bottom-6 -left-6 bg-card/95 backdrop-blur-sm shadow-elevated border-0">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-gradient-hero rounded-full flex items-center justify-center">
