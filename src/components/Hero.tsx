@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MapPin, Star, Users } from "lucide-react";
 import heroImage from "@/assets/hero-taj-mahal.jpg";
+import greetWorldLogo from "@/assets/greetworld-logo.png";
 
 const Hero = () => {
   return (
