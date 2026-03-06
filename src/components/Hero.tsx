@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MapPin, Star, Users } from "lucide-react";
 import heroImage from "@/assets/hero-taj-mahal.jpg";
+import greetWorldLogo from "@/assets/greetworld-logo.png";
 
 const Hero = () => {
   return (
@@ -17,10 +18,9 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
         <div className="max-w-4xl mx-auto">
-          {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
-            <Star className="w-4 h-4 mr-2 text-golden" fill="currentColor" />
-            <span className="text-sm font-medium">India's Premier Travel Experience</span>
+          {/* Logo */}
+          <div className="mb-6">
+            <img src={greetWorldLogo} alt="GreetWorld Holidays" className="h-32 md:h-40 lg:h-48 w-auto mx-auto" />
           </div>
 
           {/* Main Heading */}
