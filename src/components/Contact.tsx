@@ -129,7 +129,10 @@ const Contact = () => {
                         Travel Dates
                       </label>
                       <Input 
+                        name="travelDate"
                         type="date"
+                        value={formData.travelDate}
+                        onChange={handleChange}
                         className="border-border focus:ring-primary"
                       />
                     </div>
