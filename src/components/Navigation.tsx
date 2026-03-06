@@ -20,7 +20,7 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <h1 className="text-2xl font-bold bg-gradient-hero bg-clip-text text-transparent">
-              GreetWorld
+              GREETWORLD HOLIDAYS
             </h1>
           </div>
 
