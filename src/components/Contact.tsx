@@ -4,8 +4,27 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+const WHATSAPP_NUMBER = "919876543210"; // Change to your actual WhatsApp number
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    travelDate: "",
+    destination: "",
+    message: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const text = `Hello GreetWorld Holidays!%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Phone:* ${formData.phone}%0A*Travel Date:* ${formData.travelDate}%0A*Destination:* ${formData.destination}%0A*Message:* ${formData.message}`;
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank");
+  };
   const contactInfo = [
     {
       icon: <Phone className="w-6 h-6" />,
