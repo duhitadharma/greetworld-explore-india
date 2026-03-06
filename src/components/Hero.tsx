@@ -26,7 +26,7 @@ const Hero = () => {
           {/* Main Heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
             Discover the
-            <span className="block bg-gradient-warm bg-clip-text text-transparent">
+            <span className="block bg-gradient-warm bg-clip-text text-transparent pb-2">
               Magic of India
             </span>
           </h1>
