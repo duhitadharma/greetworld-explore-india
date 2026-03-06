@@ -88,6 +88,9 @@ const Contact = () => {
                         Full Name *
                       </label>
                       <Input 
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
                         placeholder="Enter your full name"
                         className="border-border focus:ring-primary"
                       />
