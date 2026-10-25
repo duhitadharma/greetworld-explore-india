@@ -41,8 +41,8 @@ const Navigation = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button variant="default" size="sm" className="shadow-warm">
-              Book Now
+            <Button asChild variant="default" size="sm" className="shadow-warm">
+              <a href="#contact">Book Now</a>
             </Button>
           </div>
 
@@ -73,8 +73,10 @@ const Navigation = () => {
                 </a>
               ))}
               <div className="px-3 py-2">
-                <Button variant="default" size="sm" className="w-full">
-                  Book Now
+                <Button asChild variant="default" size="sm" className="w-full">
+                  <a href="#contact" onClick={() => setIsMenuOpen(false)}>
+                    Book Now
+                  </a>
                 </Button>
               </div>
             </div>

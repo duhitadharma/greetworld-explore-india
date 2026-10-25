@@ -56,17 +56,21 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="mx-auto grid w-full max-w-xl grid-cols-1 gap-4 sm:grid-cols-2">
             <Button 
+              asChild
               size="lg" 
               className="w-full text-lg px-8 py-4 bg-saffron hover:bg-saffron-light text-white shadow-warm hover:shadow-elevated transition-bounce"
             >
-              Explore Packages
-              <ArrowRight className="w-5 h-5" />
+              <a href="#destinations">
+                Explore Packages
+                <ArrowRight className="w-5 h-5" />
+              </a>
             </Button>
             <Button 
+              asChild
               size="lg"
               className="w-full text-lg px-8 py-4 bg-saffron hover:bg-saffron-light text-white shadow-warm hover:shadow-elevated transition-bounce"
             >
-              Watch Our Story
+              <a href="#about">Watch Our Story</a>
             </Button>
           </div>
 
