@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
@@ -13,7 +14,10 @@ const Contact = () => {
     name: "",
     email: "",
     phone: "",
-    travelDate: "",
+    startDate: "",
+    nights: "",
+    flexibleDates: false,
+    nightsNotDecided: false,
     destination: "",
     message: "",
   });
@@ -25,13 +29,21 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    const nightsLine = formData.nightsNotDecided
+      ? "Nights: Not decided"
+      : formData.nights
+        ? `Nights: ${formData.nights}`
+        : "";
+
     const lines = [
       "Hello GreetWorld Holidays!",
       "",
       `Name: ${formData.name}`,
       `Email: ${formData.email}`,
       `Phone: ${formData.phone}`,
-      formData.travelDate && `Travel Date: ${formData.travelDate}`,
+      formData.startDate && `Start Date: ${formData.startDate}`,
+      formData.flexibleDates && "Dates: Flexible",
+      nightsLine,
       formData.destination && `Destination: ${formData.destination}`,
       formData.message && `Message: ${formData.message}`,
     ].filter(Boolean) as string[];
@@ -127,29 +139,68 @@ const Contact = () => {
                     </div>
                   </div>
 
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-2 block">Phone Number *</label>
+                    <Input
+                      name="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      placeholder="Enter your phone number"
+                      className="border-border focus:ring-primary"
+                    />
+                  </div>
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="text-sm font-medium text-foreground mb-2 block">Phone Number *</label>
+                      <label className="text-sm font-medium text-foreground mb-2 block">Start Date</label>
                       <Input
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
+                        name="startDate"
+                        type="date"
+                        value={formData.startDate}
                         onChange={handleChange}
-                        required
-                        placeholder="Enter your phone number"
                         className="border-border focus:ring-primary"
                       />
                     </div>
                     <div>
-                      <label className="text-sm font-medium text-foreground mb-2 block">Travel Dates</label>
+                      <label className="text-sm font-medium text-foreground mb-2 block">Number of Nights</label>
                       <Input
-                        name="travelDate"
-                        type="date"
-                        value={formData.travelDate}
+                        name="nights"
+                        type="number"
+                        min={1}
+                        value={formData.nights}
                         onChange={handleChange}
+                        disabled={formData.nightsNotDecided}
+                        placeholder="e.g., 7"
                         className="border-border focus:ring-primary"
                       />
                     </div>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer">
+                      <Checkbox
+                        checked={formData.flexibleDates}
+                        onCheckedChange={(checked) =>
+                          setFormData((prev) => ({ ...prev, flexibleDates: checked === true }))
+                        }
+                      />
+                      Flexible on dates
+                    </label>
+                    <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer">
+                      <Checkbox
+                        checked={formData.nightsNotDecided}
+                        onCheckedChange={(checked) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            nightsNotDecided: checked === true,
+                            nights: checked === true ? "" : prev.nights,
+                          }))
+                        }
+                      />
+                      Not decided on how many nights
+                    </label>
                   </div>
 
                   <div>
