@@ -89,7 +89,7 @@ const Destinations = () => {
         {/* Destinations Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {destinations.map((destination, index) => (
-            <Card key={index} className="overflow-hidden border-0 shadow-cool hover:shadow-elevated transition-all duration-300">
+            <Card key={index} className="overflow-hidden border border-border shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
               <CardContent className="p-6">
                 <div className="flex justify-between items-start mb-4">
                   <div>
@@ -134,15 +134,13 @@ const Destinations = () => {
           ))}
         </div>
 
-        {/* View All Button */}
         <div className="text-center mt-12">
           <Button 
-            variant="outline" 
+            asChild
             size="lg"
-            disabled
-            className="px-8 py-4 border-primary text-primary"
+            className="px-8 py-4 bg-saffron hover:bg-saffron-light text-white shadow-warm"
           >
-            View All Destinations
+            <a href="#contact">Inquire for Custom Package</a>
           </Button>
         </div>
       </div>
