@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Award, Users, Globe, Heart, Shield, Clock } from "lucide-react";
 import templeImage from "@/assets/indian-temple.jpg";
@@ -74,21 +73,6 @@ const About = () => {
               markets and ancient temples to serene mountains and pristine beaches, 
               we help you discover the soul of India.
             </p>
-            <div className="flex items-center space-x-4">
-              <Button 
-                size="lg"
-                className="bg-saffron hover:bg-saffron-light text-white shadow-warm"
-              >
-                Our Story
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-              >
-                Meet Our Team
-              </Button>
-            </div>
           </div>
 
           {/* Image */}
