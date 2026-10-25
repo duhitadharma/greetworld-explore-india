@@ -14,26 +14,19 @@ const Contact = () => {
     name: "",
     email: "",
     phone: "",
-    startDate: "",
-    nights: "",
+    travelDate: "",
+    tripLength: "",
     flexibleDates: false,
-    nightsNotDecided: false,
     destination: "",
     message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    const nightsLine = formData.nightsNotDecided
-      ? "Nights: Not decided"
-      : formData.nights
-        ? `Nights: ${formData.nights}`
-        : "";
 
     const lines = [
       "Hello GreetWorld Holidays!",
@@ -41,9 +34,9 @@ const Contact = () => {
       `Name: ${formData.name}`,
       `Email: ${formData.email}`,
       `Phone: ${formData.phone}`,
-      formData.startDate && `Start Date: ${formData.startDate}`,
+      formData.travelDate && `Travel Date: ${formData.travelDate}`,
       formData.flexibleDates && "Dates: Flexible",
-      nightsLine,
+      formData.tripLength && `Trip Length: ${formData.tripLength}`,
       formData.destination && `Destination: ${formData.destination}`,
       formData.message && `Message: ${formData.message}`,
     ].filter(Boolean) as string[];
@@ -154,53 +147,40 @@ const Contact = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="text-sm font-medium text-foreground mb-2 block">Start Date</label>
+                      <label className="text-sm font-medium text-foreground mb-2 block">Travel Date</label>
                       <Input
-                        name="startDate"
+                        name="travelDate"
                         type="date"
-                        value={formData.startDate}
+                        value={formData.travelDate}
                         onChange={handleChange}
                         className="border-border focus:ring-primary"
                       />
+                      <label className="mt-3 flex items-center gap-2 text-sm text-muted-foreground cursor-pointer">
+                        <Checkbox
+                          checked={formData.flexibleDates}
+                          onCheckedChange={(checked) =>
+                            setFormData((prev) => ({ ...prev, flexibleDates: checked === true }))
+                          }
+                        />
+                        Dates are flexible
+                      </label>
                     </div>
                     <div>
-                      <label className="text-sm font-medium text-foreground mb-2 block">Number of Nights</label>
-                      <Input
-                        name="nights"
-                        type="number"
-                        min={1}
-                        value={formData.nights}
+                      <label className="text-sm font-medium text-foreground mb-2 block">Trip Length</label>
+                      <select
+                        name="tripLength"
+                        value={formData.tripLength}
                         onChange={handleChange}
-                        disabled={formData.nightsNotDecided}
-                        placeholder="e.g., 7"
-                        className="border-border focus:ring-primary"
-                      />
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      >
+                        <option value="">Select one</option>
+                        <option value="About 4-6 nights">About 4-6 nights</option>
+                        <option value="About 1 week">About 1 week</option>
+                        <option value="About 10-14 nights">About 10-14 nights</option>
+                        <option value="Longer than 2 weeks">Longer than 2 weeks</option>
+                        <option value="Not sure yet">Not sure yet</option>
+                      </select>
                     </div>
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer">
-                      <Checkbox
-                        checked={formData.flexibleDates}
-                        onCheckedChange={(checked) =>
-                          setFormData((prev) => ({ ...prev, flexibleDates: checked === true }))
-                        }
-                      />
-                      Flexible on dates
-                    </label>
-                    <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer">
-                      <Checkbox
-                        checked={formData.nightsNotDecided}
-                        onCheckedChange={(checked) =>
-                          setFormData((prev) => ({
-                            ...prev,
-                            nightsNotDecided: checked === true,
-                            nights: checked === true ? "" : prev.nights,
-                          }))
-                        }
-                      />
-                      Not decided on how many nights
-                    </label>
                   </div>
 
                   <div>
