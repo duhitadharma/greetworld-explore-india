@@ -69,13 +69,12 @@ const Hero = () => {
               Watch Our Story
             </Button>
           </div>
-        </div>
-      </div>
 
-      {/* Floating Elements */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
+          <div className="mt-10 flex justify-center pointer-events-none" aria-hidden="true">
+            <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center animate-bounce">
+              <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
