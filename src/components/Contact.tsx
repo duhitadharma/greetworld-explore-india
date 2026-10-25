@@ -15,13 +15,13 @@ const Contact = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email Us",
-      details: ["info@greetworld.in"],
+      details: ["greetworld.h@gmail.com"],
       subtitle: "Quick Response",
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Visit Us",
-      details: ["Shop No. 01, Laxmi Nivas", "Sudarshan Chowk, Pimple Gurav", "Pune, Maharashtra, India"],
+      details: ["G603, Mithila Nagari", "Kate Patil Chowk, Pimple Saudagar", "Pimpri Chinchwad, Maharashtra, India"],
       subtitle: "Mon-Sat: 9AM-7PM",
     },
     {
