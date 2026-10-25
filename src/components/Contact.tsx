@@ -138,22 +138,6 @@ const Contact = () => {
                 </CardContent>
               </Card>
             ))}
-
-            {/* Quick Contact Card */}
-            <Card className="bg-gradient-hero text-white border-0 shadow-elevated">
-              <CardContent className="p-6 text-center">
-                <h4 className="text-xl font-bold mb-2">Need Immediate Assistance?</h4>
-                <p className="text-white/90 mb-4">Call our 24/7 helpline for urgent travel support</p>
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  className="w-full bg-white/20 hover:bg-white/30 text-white border-white/30"
-                >
-                  <Phone className="mr-2 w-5 h-5" />
-                  Call Now: +91 94030 80909
-                </Button>
-              </CardContent>
-            </Card>
           </div>
         </div>
 
