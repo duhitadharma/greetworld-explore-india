@@ -62,12 +62,16 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/e3b63f08-5360-4e24-af98-7cb0375bf374) and click on Share -> Publish.
+Pushes to `main` build the site and publish it with GitHub Pages. The live domain is `greetworld.in`. DNS for that domain is managed at BigRock and points at GitHub Pages.
 
-## Can I connect a custom domain to my Lovable project?
+## Custom domain
 
-Yes, you can!
+`greetworld.in` is registered at BigRock. Point the domain at GitHub Pages with these DNS records, and remove any older A records for the same names:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+| Type | Host | Value |
+| --- | --- | --- |
+| A | greetworld.in | 185.199.108.153 |
+| A | greetworld.in | 185.199.109.153 |
+| A | greetworld.in | 185.199.110.153 |
+| A | greetworld.in | 185.199.111.153 |
+| CNAME | www.greetworld.in | duhitadharma.github.io |
