@@ -10,7 +10,6 @@ const Destinations = () => {
       location: "Delhi - Agra - Jaipur",
       duration: "7 Days",
       rating: 4.8,
-      price: "₹25,000",
       description: "Explore India's most iconic destinations including the majestic Taj Mahal.",
       highlights: ["Taj Mahal", "Red Fort", "Hawa Mahal", "Amber Palace"]
     },
@@ -19,7 +18,6 @@ const Destinations = () => {
       location: "Alleppey - Kumarakom",
       duration: "5 Days",
       rating: 4.9,
-      price: "₹18,000",
       description: "Cruise through serene backwaters in traditional houseboats.",
       highlights: ["Houseboat Stay", "Spice Gardens", "Ayurvedic Spa", "Local Cuisine"]
     },
@@ -28,7 +26,6 @@ const Destinations = () => {
       location: "Jodhpur - Udaipur - Jaisalmer",
       duration: "10 Days",
       rating: 4.7,
-      price: "₹35,000",
       description: "Experience royal heritage in the land of maharajas.",
       highlights: ["Palace Hotels", "Desert Safari", "Royal Dining", "Folk Performances"]
     },
@@ -37,7 +34,6 @@ const Destinations = () => {
       location: "Manali - Leh - Ladakh",
       duration: "12 Days",
       rating: 4.6,
-      price: "₹45,000",
       description: "Thrilling journey through the mighty Himalayas.",
       highlights: ["Mountain Views", "Monasteries", "Adventure Sports", "Local Culture"]
     },
@@ -46,7 +42,6 @@ const Destinations = () => {
       location: "North & South Goa",
       duration: "6 Days",
       rating: 4.8,
-      price: "₹20,000",
       description: "Relax on pristine beaches and enjoy vibrant nightlife.",
       highlights: ["Beach Resorts", "Water Sports", "Portuguese Heritage", "Beach Parties"]
     },
@@ -55,7 +50,6 @@ const Destinations = () => {
       location: "Chennai - Madurai - Thanjavur",
       duration: "8 Days",
       rating: 4.5,
-      price: "₹22,000",
       description: "Discover ancient temples and rich Dravidian architecture.",
       highlights: ["Ancient Temples", "Classical Dance", "Local Crafts", "Cultural Shows"]
     }
@@ -107,14 +101,9 @@ const Destinations = () => {
                       {destination.location}
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="flex items-center mb-1">
-                      <Star className="w-4 h-4 text-golden mr-1" fill="currentColor" />
-                      <span className="text-sm font-medium">{destination.rating}</span>
-                    </div>
-                    <div className="text-2xl font-bold text-primary">
-                      {destination.price}
-                    </div>
+                  <div className="flex items-center">
+                    <Star className="w-4 h-4 text-golden mr-1" fill="currentColor" />
+                    <span className="text-sm font-medium">{destination.rating}</span>
                   </div>
                 </div>
 
