@@ -1,11 +1,9 @@
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Clock, Star } from "lucide-react";
 import destinationsImage from "@/assets/indian-destinations.jpg";
-import { useState } from "react";
 
 const Destinations = () => {
-  const [flipped, setFlipped] = useState<number | null>(null);
-
   const destinations = [
     {
       name: "Golden Triangle",
@@ -91,70 +89,55 @@ const Destinations = () => {
         {/* Destinations Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {destinations.map((destination, index) => (
-            <div
-              key={index}
-              className="cursor-pointer [perspective:1000px] h-[340px]"
-              onClick={() => setFlipped(flipped === index ? null : index)}
-            >
-              <div
-                className={`relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] ${
-                  flipped === index ? "[transform:rotateY(180deg)]" : ""
-                }`}
-              >
-                {/* Front */}
-                <div className="absolute inset-0 [backface-visibility:hidden] rounded-xl shadow-cool hover:shadow-elevated transition-shadow bg-card p-6 flex flex-col">
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 className="text-xl font-bold text-foreground mb-1">
-                        {destination.name}
-                      </h3>
-                      <div className="flex items-center text-muted-foreground text-sm">
-                        <MapPin className="w-4 h-4 mr-1" />
-                        {destination.location}
-                      </div>
-                    </div>
-                    <div className="flex items-center">
-                      <Star className="w-4 h-4 text-golden mr-1" fill="currentColor" />
-                      <span className="text-sm font-medium">{destination.rating}</span>
+            <Card key={index} className="overflow-hidden border-0 shadow-cool hover:shadow-elevated transition-all duration-300">
+              <CardContent className="p-6">
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground mb-1">
+                      {destination.name}
+                    </h3>
+                    <div className="flex items-center text-muted-foreground text-sm">
+                      <MapPin className="w-4 h-4 mr-1" />
+                      {destination.location}
                     </div>
                   </div>
-
-                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                    {destination.description}
-                  </p>
-
-                  <div className="flex items-center text-sm text-muted-foreground mb-4">
-                    <Clock className="w-4 h-4 mr-1" />
-                    {destination.duration}
+                  <div className="flex items-center">
+                    <Star className="w-4 h-4 text-golden mr-1" fill="currentColor" />
+                    <span className="text-sm font-medium">{destination.rating}</span>
                   </div>
-
-                  <p className="text-xs text-muted-foreground mt-auto">Click to see highlights →</p>
                 </div>
 
-                {/* Back */}
-                <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-xl shadow-cool bg-gradient-hero text-white p-6 flex flex-col">
-                  <h3 className="text-xl font-bold mb-4">{destination.name}</h3>
-                  <div className="text-sm font-medium mb-3">Highlights:</div>
-                  <div className="flex flex-wrap gap-2 mb-6">
+                <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                  {destination.description}
+                </p>
+
+                <div className="flex items-center text-sm text-muted-foreground mb-4">
+                  <Clock className="w-4 h-4 mr-1" />
+                  {destination.duration}
+                </div>
+
+                <div className="space-y-2 mb-6">
+                  <div className="text-sm font-medium text-foreground">Highlights:</div>
+                  <div className="flex flex-wrap gap-1">
                     {destination.highlights.map((highlight, idx) => (
                       <span
                         key={idx}
-                        className="px-3 py-1 bg-white/20 text-white text-xs rounded-full backdrop-blur-sm"
+                        className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full"
                       >
                         {highlight}
                       </span>
                     ))}
                   </div>
-                  <Button
-                    className="w-full mt-auto bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm border border-white/30"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    View Details
-                  </Button>
-                  <p className="text-xs text-white/70 mt-2 text-center">Click to flip back</p>
                 </div>
-              </div>
-            </div>
+
+                <Button
+                  disabled
+                  className="w-full bg-saffron text-white shadow-warm"
+                >
+                  View Details
+                </Button>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
@@ -163,7 +146,8 @@ const Destinations = () => {
           <Button 
             variant="outline" 
             size="lg"
-            className="px-8 py-4 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+            disabled
+            className="px-8 py-4 border-primary text-primary"
           >
             View All Destinations
           </Button>
