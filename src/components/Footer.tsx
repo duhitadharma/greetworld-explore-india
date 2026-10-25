@@ -51,15 +51,23 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-golden" />
-                <span className="text-sm">+91 98765 43210</span>
+                <a href="tel:+919403080909" className="text-sm hover:text-golden transition-colors">
+                  +91 94030 80909
+                </a>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-golden" />
-                <span className="text-sm">info@greetworld.com</span>
+                <a href="mailto:greetworld.h@gmail.com" className="text-sm hover:text-golden transition-colors">
+                  greetworld.h@gmail.com
+                </a>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-golden mt-1" />
-                <span className="text-sm">123 Travel Plaza<br />Connaught Place, New Delhi</span>
+                <span className="text-sm">
+                  G603, Mithila Nagari<br />
+                  Kate Patil Chowk, Pimple Saudagar<br />
+                  Pimpri Chinchwad, Maharashtra, India
+                </span>
               </div>
             </div>
 
