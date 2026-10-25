@@ -116,7 +116,7 @@ const Destinations = () => {
                   {destination.duration}
                 </div>
 
-                <div className="space-y-2 mb-6">
+                <div className="space-y-2">
                   <div className="text-sm font-medium text-foreground">Highlights:</div>
                   <div className="flex flex-wrap gap-1">
                     {destination.highlights.map((highlight, idx) => (
@@ -129,13 +129,6 @@ const Destinations = () => {
                     ))}
                   </div>
                 </div>
-
-                <Button
-                  disabled
-                  className="w-full bg-saffron text-white shadow-warm"
-                >
-                  View Details
-                </Button>
               </CardContent>
             </Card>
           ))}
