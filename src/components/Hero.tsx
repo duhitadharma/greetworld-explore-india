@@ -54,17 +54,17 @@ const Hero = () => {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="mx-auto grid w-full max-w-xl grid-cols-1 gap-4 sm:grid-cols-2">
             <Button 
               size="lg" 
-              className="text-lg px-8 py-4 bg-saffron hover:bg-saffron-light text-white shadow-warm hover:shadow-elevated transition-bounce"
+              className="w-full text-lg px-8 py-4 bg-saffron hover:bg-saffron-light text-white shadow-warm hover:shadow-elevated transition-bounce"
             >
               Explore Packages
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <ArrowRight className="w-5 h-5" />
             </Button>
             <Button 
               size="lg"
-              className="text-lg px-8 py-4 bg-saffron hover:bg-saffron-light text-white shadow-warm hover:shadow-elevated transition-bounce"
+              className="w-full text-lg px-8 py-4 bg-saffron hover:bg-saffron-light text-white shadow-warm hover:shadow-elevated transition-bounce"
             >
               Watch Our Story
             </Button>
