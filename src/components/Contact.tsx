@@ -1,10 +1,53 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 
+const OFFICE_EMAIL = "greetworld.h@gmail.com";
+const WHATSAPP_NUMBER = "19592230185";
+
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    travelDate: "",
+    destination: "",
+    message: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const lines = [
+      "Hello GreetWorld Holidays!",
+      "",
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      `Phone: ${formData.phone}`,
+      formData.travelDate && `Travel Date: ${formData.travelDate}`,
+      formData.destination && `Destination: ${formData.destination}`,
+      formData.message && `Message: ${formData.message}`,
+    ].filter(Boolean) as string[];
+    const body = lines.join("\n");
+    const subject = formData.destination
+      ? `Inquiry: ${formData.destination}`
+      : "New travel inquiry from greetworld.in";
+
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(body)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+    window.location.href = `mailto:${OFFICE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
   const contactInfo = [
     {
       icon: <Phone className="w-6 h-6" />,
@@ -57,15 +100,30 @@ const Contact = () => {
             <Card className="border-0 shadow-elevated">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold text-foreground mb-6">Send Us a Message</h3>
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="text-sm font-medium text-foreground mb-2 block">Full Name *</label>
-                      <Input placeholder="Enter your full name" className="border-border focus:ring-primary" />
+                      <Input
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        placeholder="Enter your full name"
+                        className="border-border focus:ring-primary"
+                      />
                     </div>
                     <div>
                       <label className="text-sm font-medium text-foreground mb-2 block">Email Address *</label>
-                      <Input type="email" placeholder="Enter your email" className="border-border focus:ring-primary" />
+                      <Input
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        placeholder="Enter your email"
+                        className="border-border focus:ring-primary"
+                      />
                     </div>
                   </div>
 
@@ -73,20 +131,33 @@ const Contact = () => {
                     <div>
                       <label className="text-sm font-medium text-foreground mb-2 block">Phone Number *</label>
                       <Input
+                        name="phone"
                         type="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        required
                         placeholder="Enter your phone number"
                         className="border-border focus:ring-primary"
                       />
                     </div>
                     <div>
                       <label className="text-sm font-medium text-foreground mb-2 block">Travel Dates</label>
-                      <Input type="date" className="border-border focus:ring-primary" />
+                      <Input
+                        name="travelDate"
+                        type="date"
+                        value={formData.travelDate}
+                        onChange={handleChange}
+                        className="border-border focus:ring-primary"
+                      />
                     </div>
                   </div>
 
                   <div>
                     <label className="text-sm font-medium text-foreground mb-2 block">Destination of Interest</label>
                     <Input
+                      name="destination"
+                      value={formData.destination}
+                      onChange={handleChange}
                       placeholder="e.g., Golden Triangle, Kerala, Rajasthan"
                       className="border-border focus:ring-primary"
                     />
@@ -95,6 +166,9 @@ const Contact = () => {
                   <div>
                     <label className="text-sm font-medium text-foreground mb-2 block">Message</label>
                     <Textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
                       placeholder="Tell us about your travel preferences, group size, budget, and any special requirements..."
                       rows={5}
                       className="border-border focus:ring-primary resize-none"
