@@ -7,7 +7,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 
 const OFFICE_EMAIL = "greetworld.h@gmail.com";
-const WHATSAPP_NUMBER = "19592230185";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -45,11 +44,6 @@ const Contact = () => {
       ? `Inquiry: ${formData.destination}`
       : "New travel inquiry from greetworld.in";
 
-    window.open(
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(body)}`,
-      "_blank",
-      "noopener,noreferrer"
-    );
     window.location.href = `mailto:${OFFICE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
